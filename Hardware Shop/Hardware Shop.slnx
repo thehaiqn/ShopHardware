@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/Solution Items/" />
+  <Project Path="../Hardwawe.DAL/Hardwawe.DAL.csproj" Id="f5226ff4-4ddd-41f4-924a-ba5d9acc945c" />
+  <Project Path="Hardware Shop.csproj" Id="1bf8cd8b-a69a-4db2-a02f-55d419ed16f0" />
+</Solution>
