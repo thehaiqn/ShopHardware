@@ -25,7 +25,7 @@ namespace Hardware_Shop
         private void DisplayCustomers()
         {
             string sql = "SELECT * FROM Customers";
-            dataGridView1.DataSource = dal.GetDataTable(sql);
+            dataGridView2.DataSource = dal.GetDataTable(sql);
         }
 
 
@@ -70,7 +70,7 @@ namespace Hardware_Shop
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (dataGridView2.SelectedRows.Count > 0)
             {
 
                 DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa sản phẩm này không?", "Xác nhận xóa", MessageBoxButtons.YesNo);
@@ -78,7 +78,7 @@ namespace Hardware_Shop
                 if (dialogResult == DialogResult.Yes)
                 {
 
-                    int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+                    int id = Convert.ToInt32(dataGridView2.SelectedRows[0].Cells[0].Value);
 
 
                     string sql = "DELETE FROM Customers WHERE CustomerID=@CustomerID";
@@ -109,7 +109,7 @@ namespace Hardware_Shop
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            string sql = "INSERT INTO Customers (Name, Phone, Email) VALUES (@Name, @Phone, @Email)";
+            string sql = "INSERT INTO Customers (CName, Phone, Email) VALUES (@Name, @Phone, @Email)";
             SqlParameter[] parameters = {
             new SqlParameter("@Name", txtCustom.Text),
             new SqlParameter("@Phone", txtPhone.Text),
@@ -136,18 +136,18 @@ namespace Hardware_Shop
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (dataGridView2.SelectedRows.Count > 0)
             {
-                int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
-                string sql = "UPDATE Customer SET Customer=@Name, Phone=@Phone, Email=@Email,  WHERE CustomerID=@CustomerID";
+                int id = Convert.ToInt32(dataGridView2.SelectedRows[0].Cells[0].Value);
+                string sql = "UPDATE Customer SET CName=@Name, Phone=@Phone, Email=@Email,  WHERE CustomerID=@CustomerID";
 
 
                 SqlParameter[] parameters = {
-            new SqlParameter("@ProductName", txtCustom.Text),
-            new SqlParameter("@PCategory", txtPhone.Text),
-             new SqlParameter("@PCategory", txtEmail.Text),
+            new SqlParameter("@Name", txtCustom.Text),
+            new SqlParameter("@Phone", txtPhone.Text),
+             new SqlParameter("@PEmail", txtEmail.Text),
 
-            new SqlParameter("@ProductID", id)
+            new SqlParameter("@Customer", id)
         };
 
 
@@ -169,24 +169,69 @@ namespace Hardware_Shop
         }
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow != null && dataGridView1.CurrentRow.Index != -1)
-            {
 
-                txtCustom.Text = dataGridView1.CurrentRow.Cells["Name"].Value.ToString();
-                txtPhone.Text = dataGridView1.CurrentRow.Cells["Phone"].Value.ToString();
-                txtEmail.Text = dataGridView1.CurrentRow.Cells["Email"].Value.ToString();
-
-
-
-            }
         }
-             private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            using (SolidBrush b = new SolidBrush(dataGridView1.RowHeadersDefaultCellStyle.ForeColor))
-            {
 
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
-            }
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+            Product product = new Product();
+            product.Show();
+            this.Hide();
+
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            Product product = new Product();
+            product.Show();
+            this.Hide();
+        }
+
+        private void label2_Click_1(object sender, EventArgs e)
+        {
+            Sales sales = new Sales();
+            sales.Show();   
+            this.Hide();    
+        }
+
+        private void pictureBox9_Click(object sender, EventArgs e)
+        {
+            Sales sales = new Sales();
+            sales.Show();
+            this.Hide();
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
+
+        private void pictureBox10_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Customers_Load(object sender, EventArgs e)
+        {
+
         }
     }
     }

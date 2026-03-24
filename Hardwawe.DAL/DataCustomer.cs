@@ -41,6 +41,33 @@ namespace Hardwawe.DAL
             }
             catch { return false; }
         }
+        public string GetCustomerNameByID(string customerID)
+        {
+            string name = "";
+
+            using (SqlConnection con = new SqlConnection(strCon))
+            {
+                try
+                {
+                    con.Open();
+                    string sql = "SELECT CName FROM Customers WHERE CustomerId = @ID";
+                    SqlCommand cmd = new SqlCommand(sql, con);
+                    cmd.Parameters.AddWithValue("@ID", customerID);
+
+
+                    object result = cmd.ExecuteScalar();
+                    if (result != null)
+                    {
+                        name = result.ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Lỗi DAL (GetCustomerNameByID): " + ex.Message);
+                }
+            }
+            return name;
+        }
     }
 }
     
