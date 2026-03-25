@@ -25,7 +25,7 @@ namespace Hardware_Shop
         private void DisplayCustomers()
         {
             string sql = "SELECT * FROM Customers";
-            dataGridView2.DataSource = dal.GetDataTable(sql);
+            dataGridView1.DataSource = dal.GetDataTable(sql);
         }
 
 
@@ -70,7 +70,7 @@ namespace Hardware_Shop
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (dataGridView2.SelectedRows.Count > 0)
+            if (dataGridView1.SelectedRows.Count > 0)
             {
 
                 DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa sản phẩm này không?", "Xác nhận xóa", MessageBoxButtons.YesNo);
@@ -78,7 +78,7 @@ namespace Hardware_Shop
                 if (dialogResult == DialogResult.Yes)
                 {
 
-                    int id = Convert.ToInt32(dataGridView2.SelectedRows[0].Cells[0].Value);
+                    int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
 
 
                     string sql = "DELETE FROM Customers WHERE CustomerID=@CustomerID";
@@ -129,25 +129,20 @@ namespace Hardware_Shop
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (dataGridView2.SelectedRows.Count > 0)
+            if (dataGridView1.SelectedRows.Count > 0)
             {
-                int id = Convert.ToInt32(dataGridView2.SelectedRows[0].Cells[0].Value);
-                string sql = "UPDATE Customer SET CName=@Name, Phone=@Phone, Email=@Email,  WHERE CustomerID=@CustomerID";
+                int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
+                string sql = "UPDATE Customers SET CName=@Name, Phone=@Phone, Email=@Email WHERE CustomerID=@CustomerID";
 
 
                 SqlParameter[] parameters = {
             new SqlParameter("@Name", txtCustom.Text),
             new SqlParameter("@Phone", txtPhone.Text),
-             new SqlParameter("@PEmail", txtEmail.Text),
+           new SqlParameter("@Email", txtEmail.Text),
 
-            new SqlParameter("@Customer", id)
+            new SqlParameter("@CustomerID", id)
         };
 
 
@@ -166,14 +161,6 @@ namespace Hardware_Shop
             {
                 MessageBox.Show("Vui lòng chọn một dòng để cập nhật!");
             }
-        }
-        private void dataGridView1_DoubleClick(object sender, EventArgs e)
-        {
-
-        }
-        private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-
         }
 
         private void label5_Click(object sender, EventArgs e)

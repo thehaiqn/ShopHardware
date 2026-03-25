@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sales));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -60,7 +61,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -88,6 +88,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(304, 680);
             this.panel1.TabIndex = 1;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label12.Location = new System.Drawing.Point(138, 587);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(106, 35);
+            this.label12.TabIndex = 51;
+            this.label12.Text = "Logout";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // pictureBox5
             // 
@@ -140,7 +154,7 @@
             this.label3.Location = new System.Drawing.Point(138, 380);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(142, 26);
+            this.label3.Size = new System.Drawing.Size(176, 35);
             this.label3.TabIndex = 7;
             this.label3.Text = "Khách Hàng";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -154,7 +168,7 @@
             this.label2.Location = new System.Drawing.Point(138, 488);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 26);
+            this.label2.Size = new System.Drawing.Size(79, 35);
             this.label2.TabIndex = 5;
             this.label2.Text = "Sales";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -168,7 +182,7 @@
             this.label1.Location = new System.Drawing.Point(138, 280);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 26);
+            this.label1.Size = new System.Drawing.Size(143, 35);
             this.label1.TabIndex = 4;
             this.label1.Text = "Sản Phẩm";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -182,7 +196,7 @@
             this.text1.Location = new System.Drawing.Point(72, 149);
             this.text1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.text1.Name = "text1";
-            this.text1.Size = new System.Drawing.Size(139, 22);
+            this.text1.Size = new System.Drawing.Size(175, 26);
             this.text1.TabIndex = 3;
             this.text1.Text = "Hardware Shop";
             // 
@@ -213,7 +227,7 @@
             this.Products.ForeColor = System.Drawing.Color.DimGray;
             this.Products.Location = new System.Drawing.Point(755, 78);
             this.Products.Name = "Products";
-            this.Products.Size = new System.Drawing.Size(157, 31);
+            this.Products.Size = new System.Drawing.Size(197, 38);
             this.Products.TabIndex = 39;
             this.Products.Text = "SẢN PHẨM";
             // 
@@ -257,6 +271,7 @@
             this.btnUpdate.TabIndex = 35;
             this.btnUpdate.Text = "Làm mới";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnThem
             // 
@@ -286,7 +301,7 @@
             this.label7.Location = new System.Drawing.Point(896, 181);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(90, 24);
+            this.label7.Size = new System.Drawing.Size(117, 31);
             this.label7.TabIndex = 30;
             this.label7.Text = "Số lượng";
             // 
@@ -299,7 +314,7 @@
             this.label6.Location = new System.Drawing.Point(588, 181);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(71, 24);
+            this.label6.Size = new System.Drawing.Size(92, 31);
             this.label6.TabIndex = 29;
             this.label6.Text = "Mã SP";
             // 
@@ -312,7 +327,7 @@
             this.label5.Location = new System.Drawing.Point(460, 181);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 24);
+            this.label5.Size = new System.Drawing.Size(59, 31);
             this.label5.TabIndex = 28;
             this.label5.Text = "Tên";
             // 
@@ -325,7 +340,7 @@
             this.label4.Location = new System.Drawing.Point(327, 181);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 24);
+            this.label4.Size = new System.Drawing.Size(44, 31);
             this.label4.TabIndex = 27;
             this.label4.Text = "ID";
             // 
@@ -357,7 +372,7 @@
             this.label8.Location = new System.Drawing.Point(742, 181);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(75, 24);
+            this.label8.Size = new System.Drawing.Size(98, 31);
             this.label8.TabIndex = 44;
             this.label8.Text = "Tên SP";
             // 
@@ -379,7 +394,7 @@
             this.label9.Location = new System.Drawing.Point(1056, 181);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(42, 24);
+            this.label9.Size = new System.Drawing.Size(57, 31);
             this.label9.TabIndex = 46;
             this.label9.Text = "Giá";
             // 
@@ -400,7 +415,7 @@
             this.label10.Location = new System.Drawing.Point(1198, 181);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(53, 24);
+            this.label10.Size = new System.Drawing.Size(69, 31);
             this.label10.TabIndex = 48;
             this.label10.Text = "Date";
             // 
@@ -417,24 +432,10 @@
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.label11.Location = new System.Drawing.Point(1326, 9);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(45, 44);
+            this.label11.Size = new System.Drawing.Size(55, 54);
             this.label11.TabIndex = 50;
             this.label11.Text = "X";
             this.label11.Click += new System.EventHandler(this.label11_Click);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label12.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label12.Location = new System.Drawing.Point(138, 587);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(85, 26);
-            this.label12.TabIndex = 51;
-            this.label12.Text = "Logout";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // Sales
             // 

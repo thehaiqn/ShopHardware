@@ -216,27 +216,28 @@ namespace Hardware_Shop
                 MessageBox.Show("Vui lòng nhập số lượng hợp lệ");
                 return;
             }
-                try
-                {
+            try
+            {
                 con.Open();
 
-         
+
                 string sql = "INSERT INTO Sales(CustomerID, CustomerName, ProductID, ProductName, QuantitySold, TotalAmount, SaleDate) " +
                              "VALUES (@CusID, @CusName, @ProID, @ProName, @Qty, @Total, @Date)";
 
                 SqlCommand cmd = new SqlCommand(sql, con);
 
-            
+
                 cmd.Parameters.AddWithValue("@CusID", cbCustomID.Text);
                 cmd.Parameters.AddWithValue("@CusName", txtCustom.Text);
                 cmd.Parameters.AddWithValue("@ProID", cbProductID.Text);
                 cmd.Parameters.AddWithValue("@ProName", txtProduct.Text);
                 cmd.Parameters.AddWithValue("@Qty", txtQuantity.Text);
 
-         
+
                 int soLuong = Convert.ToInt32(txtQuantity.Text);
                 decimal donGia = Convert.ToDecimal(txtPrice.Text);
                 decimal tongTien = soLuong * donGia;
+          
                 cmd.Parameters.AddWithValue("@Total", tongTien);
 
                 cmd.Parameters.AddWithValue("@Date", dateTimePicker1.Value.Date);
@@ -245,33 +246,55 @@ namespace Hardware_Shop
                 MessageBox.Show("Thêm hóa đơn thành công");
                 con.Close();
 
-             
+
                 DisplaySales();
                 ResetFields();
             }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    con.Close();
-                }
-
-
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
-        
+            finally
+            {
+                con.Close();
+            }
+
+
+        }
+
 
         private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
-            if(decimal.TryParse(txtPrice.Text, out decimal price)&& int.TryParse(txtQuantity.Text,out int qty)){
-                decimal total = price * qty;
-               txtPrice.Text = total.ToString("0.00");
-            }
-            else
+            try
             {
-               txtPrice.Text = "0.00";
+     
+                if (string.IsNullOrEmpty(txtQuantity.Text) || string.IsNullOrEmpty(txtPrice.Text))
+                {
+                    txtPrice.Text = "";
+                    return;
+                }
+
+  
+                int soLuong = Convert.ToInt32(txtQuantity.Text);
+                int donGia = Convert.ToInt32(txtPrice.Text);
+
+             
+                int tongTien = soLuong * donGia;
+
+ 
+                txtPrice.Text = tongTien.ToString();
+            }
+            catch
+            {
+          
+               txtPrice.Text = "0";
             }
         }
-    }
-}
+
+
+
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            
+        } }}

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Product));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
@@ -92,7 +94,7 @@
             this.label12.Location = new System.Drawing.Point(138, 556);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(85, 26);
+            this.label12.Size = new System.Drawing.Size(106, 35);
             this.label12.TabIndex = 51;
             this.label12.Text = "Logout";
             this.label12.Click += new System.EventHandler(this.label12_Click);
@@ -148,7 +150,7 @@
             this.label3.Location = new System.Drawing.Point(138, 349);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(142, 26);
+            this.label3.Size = new System.Drawing.Size(176, 35);
             this.label3.TabIndex = 7;
             this.label3.Text = "Khách Hàng";
             this.label3.Click += new System.EventHandler(this.label3_Click_1);
@@ -162,7 +164,7 @@
             this.label2.Location = new System.Drawing.Point(138, 457);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 26);
+            this.label2.Size = new System.Drawing.Size(79, 35);
             this.label2.TabIndex = 5;
             this.label2.Text = "Sales";
             this.label2.Click += new System.EventHandler(this.label2_Click_1);
@@ -176,7 +178,7 @@
             this.label1.Location = new System.Drawing.Point(138, 249);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 26);
+            this.label1.Size = new System.Drawing.Size(143, 35);
             this.label1.TabIndex = 4;
             this.label1.Text = "Sản Phẩm";
             // 
@@ -189,7 +191,7 @@
             this.label9.Location = new System.Drawing.Point(72, 133);
             this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(139, 22);
+            this.label9.Size = new System.Drawing.Size(175, 26);
             this.label9.TabIndex = 3;
             this.label9.Text = "Hardware Shop";
             // 
@@ -213,7 +215,7 @@
             this.label4.Location = new System.Drawing.Point(335, 170);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(141, 24);
+            this.label4.Size = new System.Drawing.Size(185, 31);
             this.label4.TabIndex = 12;
             this.label4.Text = "Tên Sản Phẩm";
             // 
@@ -226,7 +228,7 @@
             this.label5.Location = new System.Drawing.Point(545, 170);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 24);
+            this.label5.Size = new System.Drawing.Size(68, 31);
             this.label5.TabIndex = 13;
             this.label5.Text = "Loại";
             // 
@@ -239,7 +241,7 @@
             this.label6.Location = new System.Drawing.Point(745, 170);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(99, 24);
+            this.label6.Size = new System.Drawing.Size(127, 31);
             this.label6.TabIndex = 14;
             this.label6.Text = "Số Lượng";
             // 
@@ -252,7 +254,7 @@
             this.label7.Location = new System.Drawing.Point(948, 170);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 24);
+            this.label7.Size = new System.Drawing.Size(57, 31);
             this.label7.TabIndex = 15;
             this.label7.Text = "Giá";
             this.label7.Click += new System.EventHandler(this.label7_Click);
@@ -262,7 +264,7 @@
             this.txtName.Location = new System.Drawing.Point(341, 218);
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(116, 20);
+            this.txtName.Size = new System.Drawing.Size(116, 23);
             this.txtName.TabIndex = 16;
             // 
             // txtSoLuong
@@ -270,7 +272,7 @@
             this.txtSoLuong.Location = new System.Drawing.Point(749, 217);
             this.txtSoLuong.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSoLuong.Name = "txtSoLuong";
-            this.txtSoLuong.Size = new System.Drawing.Size(116, 20);
+            this.txtSoLuong.Size = new System.Drawing.Size(116, 23);
             this.txtSoLuong.TabIndex = 18;
             // 
             // txtGia
@@ -278,7 +280,7 @@
             this.txtGia.Location = new System.Drawing.Point(952, 217);
             this.txtGia.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtGia.Name = "txtGia";
-            this.txtGia.Size = new System.Drawing.Size(116, 20);
+            this.txtGia.Size = new System.Drawing.Size(116, 23);
             this.txtGia.TabIndex = 19;
             // 
             // btnThem
@@ -327,11 +329,27 @@
             // 
             // dataGridView1
             // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(400, 395);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.Location = new System.Drawing.Point(438, 395);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(653, 211);
+            this.dataGridView1.Size = new System.Drawing.Size(553, 196);
             this.dataGridView1.TabIndex = 24;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
@@ -344,7 +362,7 @@
             this.Products.ForeColor = System.Drawing.Color.DimGray;
             this.Products.Location = new System.Drawing.Point(625, 49);
             this.Products.Name = "Products";
-            this.Products.Size = new System.Drawing.Size(157, 31);
+            this.Products.Size = new System.Drawing.Size(197, 38);
             this.Products.TabIndex = 25;
             this.Products.Text = "SẢN PHẨM";
             this.Products.Click += new System.EventHandler(this.Products_Click);
@@ -357,7 +375,7 @@
             "CPU"});
             this.cbLoai.Location = new System.Drawing.Point(549, 216);
             this.cbLoai.Name = "cbLoai";
-            this.cbLoai.Size = new System.Drawing.Size(121, 21);
+            this.cbLoai.Size = new System.Drawing.Size(121, 25);
             this.cbLoai.TabIndex = 26;
             this.cbLoai.SelectedIndexChanged += new System.EventHandler(this.cbLoai_SelectedIndexChanged_1);
             // 
@@ -367,14 +385,14 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.label8.Location = new System.Drawing.Point(1070, 9);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 44);
+            this.label8.Size = new System.Drawing.Size(55, 54);
             this.label8.TabIndex = 42;
             this.label8.Text = "X";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // Product
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1137, 653);
             this.Controls.Add(this.panel2);
