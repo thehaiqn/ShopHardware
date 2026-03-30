@@ -220,6 +220,53 @@ namespace Hardware_Shop
         {
 
         }
+
+        private void pictureBox10_Click_1(object sender, EventArgs e)
+        {
+            Sales sale = new Sales();
+            sale.Show();
+            this.Hide();    
+        }
+
+        private void label2_Click_2(object sender, EventArgs e)
+        {
+            Sales sale = new Sales();
+            sale.Show();
+            this.Hide();
+        }
+
+        private void label12_Click_1(object sender, EventArgs e)
+        {
+            Login login1 = new Login();
+            login1.Show();
+            this.Hide();
+        }
+
+        private void pictureBox11_Click(object sender, EventArgs e)
+        {
+            Login login1 = new Login();
+            login1.Show();
+            this.Hide();
+        }
+
+        private void label1_Click_2(object sender, EventArgs e)
+        {
+            Product product = new Product();
+            product.Show();
+            this.Hide();
+        }
+
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+           Product product = new Product();
+            product.Show();
+            this.Hide();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     }
 

@@ -269,4 +269,19 @@ namespace Hardware_Shop
             login.Show();
             this.Hide();
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+           
+        }
     } }

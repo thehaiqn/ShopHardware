@@ -187,6 +187,7 @@ namespace Hardware_Shop
 
         private void cbProductID_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             con.Open();
             SqlCommand sqlCommand = new SqlCommand("SELECT ProductName, Price From Products WHERE ProductID=@ID", con);
             sqlCommand.Parameters.AddWithValue("@ID", cbProductID.Text);
@@ -194,7 +195,7 @@ namespace Hardware_Shop
             if (reader.Read())
             {
                 txtProduct.Text = reader["ProductName"].ToString();
-                txtPrice.Text = reader["Price"].ToString();
+                textBox1.Text = reader["Price"].ToString();
             }
             con.Close();
         }
@@ -219,6 +220,25 @@ namespace Hardware_Shop
             try
             {
                 con.Open();
+                SqlCommand sqlCommand = new SqlCommand("SELECT Quantity, Price FROM Products Where ProductID = @PID",con);
+                sqlCommand.Parameters.AddWithValue("@PID", cbProductID.Text);
+                SqlDataReader reader = sqlCommand.ExecuteReader();
+                if (!reader.Read())
+                {
+                    MessageBox.Show("Không tìm thấy sản phẩm");
+                    reader.Close();
+                    con.Close();
+                    return;
+                }
+                int availableQty = Convert.ToInt32(reader["Quantity"]);
+                decimal unitPrice = Convert.ToInt32(reader["Price"]);
+                reader.Close();
+                if(quantitySold > unitPrice)
+                {
+                    MessageBox.Show("Hàng không có sẵn");
+                    return;
+                }
+                decimal totalAmount = quantitySold * unitPrice;
 
 
                 string sql = "INSERT INTO Sales(CustomerID, CustomerName, ProductID, ProductName, QuantitySold, TotalAmount, SaleDate) " +
@@ -231,22 +251,16 @@ namespace Hardware_Shop
                 cmd.Parameters.AddWithValue("@CusName", txtCustom.Text);
                 cmd.Parameters.AddWithValue("@ProID", cbProductID.Text);
                 cmd.Parameters.AddWithValue("@ProName", txtProduct.Text);
-                cmd.Parameters.AddWithValue("@Qty", txtQuantity.Text);
-
-
-                int soLuong = Convert.ToInt32(txtQuantity.Text);
-                decimal donGia = Convert.ToDecimal(txtPrice.Text);
-                decimal tongTien = soLuong * donGia;
-          
-                cmd.Parameters.AddWithValue("@Total", tongTien);
+                cmd.Parameters.AddWithValue("@Qty", quantitySold);
+               
+                cmd.Parameters.AddWithValue("@Total", textBox1.Text);
 
                 cmd.Parameters.AddWithValue("@Date", dateTimePicker1.Value.Date);
 
                 cmd.ExecuteNonQuery();
+                SqlCommand updateStock = new SqlCommand("UPDATE Products SET Quantity= Quantity -@Qty Where ProductID = @PID", con);
                 MessageBox.Show("Thêm hóa đơn thành công");
                 con.Close();
-
-
                 DisplaySales();
                 ResetFields();
             }
@@ -265,29 +279,15 @@ namespace Hardware_Shop
 
         private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
-            try
+
+            if (decimal.TryParse(textBox1.Text, out decimal price) && int.TryParse(txtQuantity.Text, out int qty))
             {
-     
-                if (string.IsNullOrEmpty(txtQuantity.Text) || string.IsNullOrEmpty(txtPrice.Text))
-                {
-                    txtPrice.Text = "";
-                    return;
-                }
-
-  
-                int soLuong = Convert.ToInt32(txtQuantity.Text);
-                int donGia = Convert.ToInt32(txtPrice.Text);
-
-             
-                int tongTien = soLuong * donGia;
-
- 
-                txtPrice.Text = tongTien.ToString();
+                decimal total = price * qty;
+                textBox1.Text = total.ToString("0.00");
             }
-            catch
+            else
             {
-          
-               txtPrice.Text = "0";
+                textBox1.Text="";
             }
         }
 
@@ -297,4 +297,53 @@ namespace Hardware_Shop
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             
-        } }}
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+            Product product = new Product();
+            product.Show();
+            this.Hide();
+        }
+
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+            Product product = new Product();
+            product.Show();
+            this.Hide();
+        }
+
+        private void label3_Click_1(object sender, EventArgs e)
+        {
+            Customers customers = new Customers();
+            customers.Show();
+            this.Hide();
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
+
+        private void pictureBox2_Click_1(object sender, EventArgs e)
+        {
+            Customers customers = new Customers();
+            customers.Show();
+            this.Hide();
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
