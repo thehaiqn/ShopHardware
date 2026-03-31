@@ -10,9 +10,13 @@ D:\Thực Hành LTUD\Đồ án\Hardwawe.DAL\obj\Debug\Hardwawe.DAL.pdb
 D:\ThucHanhLTUD\DoAn\Hardwawe.DAL\bin\Debug\Hardwawe.DAL.exe.config
 D:\ThucHanhLTUD\DoAn\Hardwawe.DAL\bin\Debug\Hardwawe.DAL.exe
 D:\ThucHanhLTUD\DoAn\Hardwawe.DAL\bin\Debug\Hardwawe.DAL.pdb
+D:\ThucHanhLTUD\DoAn\Hardwawe.DAL\bin\Debug\Hardwawe.DTO.exe
+D:\ThucHanhLTUD\DoAn\Hardwawe.DAL\bin\Debug\Hardwawe.DTO.pdb
+D:\ThucHanhLTUD\DoAn\Hardwawe.DAL\bin\Debug\Hardwawe.DTO.exe.config
 D:\ThucHanhLTUD\DoAn\Hardwawe.DAL\obj\Debug\Hardwawe.DAL.csproj.AssemblyReference.cache
 D:\ThucHanhLTUD\DoAn\Hardwawe.DAL\obj\Debug\Hardwawe.DAL.Properties.Resources.resources
 D:\ThucHanhLTUD\DoAn\Hardwawe.DAL\obj\Debug\Hardwawe.DAL.csproj.GenerateResource.cache
 D:\ThucHanhLTUD\DoAn\Hardwawe.DAL\obj\Debug\Hardwawe.DAL.csproj.CoreCompileInputs.cache
+D:\ThucHanhLTUD\DoAn\Hardwawe.DAL\obj\Debug\Hardwawe.A59B96D0.Up2Date
 D:\ThucHanhLTUD\DoAn\Hardwawe.DAL\obj\Debug\Hardwawe.DAL.exe
 D:\ThucHanhLTUD\DoAn\Hardwawe.DAL\obj\Debug\Hardwawe.DAL.pdb

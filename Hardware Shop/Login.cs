@@ -1,4 +1,5 @@
-﻿using Hardwawe.DAL;
+﻿using HardwareBLL;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ namespace Hardware_Shop
 {
     public partial class Login : Form
     {
-        DataAccessor dal = new DataAccessor();
+        LoginBLL loginBLL = new LoginBLL();
         public Login()
         {
             InitializeComponent();
@@ -44,25 +45,14 @@ namespace Hardware_Shop
             string user = txtUser.Text;
             string pass = txtPass.Text;
 
-
-            if (user == "admin" && pass == "123")
+            // Gọi xuống BLL để check
+            if (loginBLL.KiemTraDangNhap(user, pass))
             {
-               
-                try
-                {
-                    dal.GetDataTable("SELECT TOP 1 * FROM Products");
+                MessageBox.Show("Đăng nhập thành công!", "Thông báo");
 
-                    MessageBox.Show("Đăng nhập thành công!", "Thông báo");
-
-           
-                    Product p = new Product();
-                    p.Show();
-                    this.Hide();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi kết nối Database: " + ex.Message);
-                }
+                Product p = new Product();
+                p.Show();
+                this.Hide();
             }
             else
             {

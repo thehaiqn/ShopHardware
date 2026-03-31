@@ -1,4 +1,7 @@
-﻿using System;
+﻿using HardwareBLL;
+using Hardwawe.DTO;
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,14 +11,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Hardwawe.DAL;
 
 
 namespace Hardware_Shop
 {
     public partial class Product : Form
     {
-        DataAccessor dal = new DataAccessor();
+        private ProductBLL bll = new ProductBLL();
         public Product()
         {
             InitializeComponent();
@@ -33,8 +35,7 @@ namespace Hardware_Shop
         
         private void DisplayProducts()
         {
-            string sql = "SELECT * FROM Products";
-            dataGridView1.DataSource = dal.GetDataTable(sql);
+            dataGridView1.DataSource = bll.GetProducts();
         }
 
       
@@ -87,51 +88,62 @@ namespace Hardware_Shop
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            string sql = "INSERT INTO Products (ProductName, Category, Quantity, Price) VALUES (@ProductName, @PCategory, @Quantity, @Price)";
-            SqlParameter[] parameters = {
-            new SqlParameter("@ProductName", txtName.Text),
-            new SqlParameter("@PCategory", cbLoai.Text),
-            new SqlParameter("@Quantity", int.Parse(txtSoLuong.Text)),
-            new SqlParameter("@Price", decimal.Parse(txtGia.Text))
-        };
-
-            if (dal.ExecuteNonQuery(sql, parameters))
+            try
             {
-                MessageBox.Show("Thêm thành công!");
-                DisplayProducts();
-                ResetFields();
-            }
-            else
-            {
-                MessageBox.Show("Có lỗi xảy ra!");
-            }
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count > 0) {
-                int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
-                string sql = "UPDATE Products SET ProductName=@ProductName, Category=@PCategory, Quantity=@Quantity, Price=@Price WHERE ProductID=@ProductID";
-
-             
-                SqlParameter[] parameters = {
-            new SqlParameter("@ProductName", txtName.Text),
-            new SqlParameter("@PCategory", cbLoai.Text),
-            new SqlParameter("@Quantity", decimal.Parse(txtSoLuong.Text)),
-            new SqlParameter("@Price", decimal.Parse(txtGia.Text)),
-            new SqlParameter("@ProductID", id)
-        };
-
-      
-                if (dal.ExecuteNonQuery(sql, parameters))
+                ProductDTO product = new ProductDTO
                 {
-                    MessageBox.Show("Cập nhật thành công!");
+                    ProductName = txtName.Text,
+                    Category = cbLoai.Text,
+                    Quantity = int.Parse(txtSoLuong.Text),
+                    Price = decimal.Parse(txtGia.Text)
+                };
+
+                if (bll.AddProduct(product))
+                {
+                    MessageBox.Show("Thêm thành công!");
                     DisplayProducts();
                     ResetFields();
                 }
                 else
                 {
-                    MessageBox.Show("Cập nhật thất bại!");
+                    MessageBox.Show("Thêm thất bại. Vui lòng kiểm tra lại thông tin!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi nhập liệu: " + ex.Message);
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                try
+                {
+                    ProductDTO product = new ProductDTO
+                    {
+                        ProductID = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value),
+                        ProductName = txtName.Text,
+                        Category = cbLoai.Text,
+                        Quantity = int.Parse(txtSoLuong.Text),
+                        Price = decimal.Parse(txtGia.Text)
+                    };
+
+                    if (bll.UpdateProduct(product))
+                    {
+                        MessageBox.Show("Cập nhật thành công!");
+                        DisplayProducts();
+                        ResetFields();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cập nhật thất bại!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi nhập liệu: " + ex.Message);
                 }
             }
             else
@@ -145,40 +157,28 @@ namespace Hardware_Shop
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-      
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa sản phẩm này không?", "Xác nhận xóa", MessageBoxButtons.YesNo);
-
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xoá sản phẩm này không?", "Xác nhận", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-       
                     int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
 
-         
-                    string sql = "DELETE FROM Products WHERE ProductID=@ProductID";
-
-      
-                    SqlParameter[] parameters = {
-                new SqlParameter("@ProductID", id)
-            };
-
-
-                    if (dal.ExecuteNonQuery(sql, parameters))
+                    if (bll.DeleteProduct(id))
                     {
-                        MessageBox.Show("Đã xóa sản phẩm!");
-                        DisplayProducts(); 
-                        ResetFields();    
+                        MessageBox.Show("Đã xoá sản phẩm!");
+                        DisplayProducts();
+                        ResetFields();
                     }
                     else
                     {
-                        MessageBox.Show("Xóa thất bại!");
+                        MessageBox.Show("Xoá thất bại!");
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn một dòng để xóa!");
+                MessageBox.Show("Vui lòng chọn một dòng để xoá!");
             }
-        }
+        }     
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

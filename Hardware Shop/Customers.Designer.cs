@@ -75,7 +75,7 @@
             this.Products.Location = new System.Drawing.Point(590, 53);
             this.Products.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Products.Name = "Products";
-            this.Products.Size = new System.Drawing.Size(204, 31);
+            this.Products.Size = new System.Drawing.Size(256, 38);
             this.Products.TabIndex = 40;
             this.Products.Text = "KHÁCH HÀNG";
             // 
@@ -150,28 +150,31 @@
             // txtEmail
             // 
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.txtEmail.Location = new System.Drawing.Point(873, 217);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(134, 21);
+            this.txtEmail.Size = new System.Drawing.Size(134, 29);
             this.txtEmail.TabIndex = 34;
             // 
             // txtPhone
             // 
             this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.txtPhone.Location = new System.Drawing.Point(648, 217);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(134, 21);
+            this.txtPhone.Size = new System.Drawing.Size(134, 29);
             this.txtPhone.TabIndex = 33;
             // 
             // txtCustom
             // 
             this.txtCustom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCustom.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.txtCustom.Location = new System.Drawing.Point(410, 217);
             this.txtCustom.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustom.Name = "txtCustom";
-            this.txtCustom.Size = new System.Drawing.Size(134, 21);
+            this.txtCustom.Size = new System.Drawing.Size(134, 29);
             this.txtCustom.TabIndex = 31;
             // 
             // label7
@@ -182,7 +185,7 @@
             this.label7.Location = new System.Drawing.Point(913, 175);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(51, 21);
+            this.label7.Size = new System.Drawing.Size(68, 27);
             this.label7.TabIndex = 30;
             this.label7.Text = "Email";
             // 
@@ -194,7 +197,7 @@
             this.label6.Location = new System.Drawing.Point(682, 175);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 21);
+            this.label6.Size = new System.Drawing.Size(73, 27);
             this.label6.TabIndex = 29;
             this.label6.Text = "Phone";
             // 
@@ -206,7 +209,7 @@
             this.label4.Location = new System.Drawing.Point(451, 175);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 21);
+            this.label4.Size = new System.Drawing.Size(49, 27);
             this.label4.TabIndex = 27;
             this.label4.Text = "Tên";
             // 
@@ -216,7 +219,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.label5.Location = new System.Drawing.Point(1080, 9);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(45, 44);
+            this.label5.Size = new System.Drawing.Size(55, 54);
             this.label5.TabIndex = 41;
             this.label5.Text = "X";
             this.label5.Click += new System.EventHandler(this.label5_Click);
@@ -224,6 +227,7 @@
             // dataGridView1
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -239,7 +243,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -263,6 +267,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(450, 196);
             this.dataGridView1.TabIndex = 42;
+            this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             // 
             // panel2
             // 
@@ -293,7 +298,7 @@
             this.label12.Location = new System.Drawing.Point(138, 556);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(85, 26);
+            this.label12.Size = new System.Drawing.Size(106, 35);
             this.label12.TabIndex = 51;
             this.label12.Text = "Logout";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -351,7 +356,7 @@
             this.label3.Location = new System.Drawing.Point(138, 351);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(142, 26);
+            this.label3.Size = new System.Drawing.Size(176, 35);
             this.label3.TabIndex = 7;
             this.label3.Text = "Khách Hàng";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -367,7 +372,7 @@
             this.label2.Location = new System.Drawing.Point(138, 457);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 26);
+            this.label2.Size = new System.Drawing.Size(79, 35);
             this.label2.TabIndex = 5;
             this.label2.Text = "Sales";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -384,7 +389,7 @@
             this.label1.Location = new System.Drawing.Point(138, 249);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 26);
+            this.label1.Size = new System.Drawing.Size(143, 35);
             this.label1.TabIndex = 4;
             this.label1.Text = "Sản Phẩm";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -399,7 +404,7 @@
             this.label9.Location = new System.Drawing.Point(72, 133);
             this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(139, 22);
+            this.label9.Size = new System.Drawing.Size(175, 26);
             this.label9.TabIndex = 3;
             this.label9.Text = "Hardware Shop";
             // 
@@ -416,7 +421,7 @@
             // 
             // Customers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;

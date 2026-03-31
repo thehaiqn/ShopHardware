@@ -1,5 +1,7 @@
 ﻿
+using HardwareBLL;
 using Hardwawe.DAL;
+using Hardwawe.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +18,7 @@ namespace Hardware_Shop
 {
     public partial class Customers : Form
     {
-        DataCustomer dal = new DataCustomer();
+        private CustomerBLL customerBLL = new CustomerBLL();
         public Customers()
         {
             InitializeComponent();
@@ -24,8 +26,7 @@ namespace Hardware_Shop
         }
         private void DisplayCustomers()
         {
-            string sql = "SELECT * FROM Customers";
-            dataGridView1.DataSource = dal.GetDataTable(sql);
+            dataGridView1.DataSource = customerBLL.GetCustomers();
         }
 
 
@@ -72,26 +73,14 @@ namespace Hardware_Shop
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa sản phẩm này không?", "Xác nhận xóa", MessageBoxButtons.YesNo);
-
-                if (dialogResult == DialogResult.Yes)
+                DialogResult result = MessageBox.Show("Bạn có chắc muốn xóa khách hàng này?", "Xác nhận", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
                 {
-
                     int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
 
-
-                    string sql = "DELETE FROM Customers WHERE CustomerID=@CustomerID";
-
-
-                    SqlParameter[] parameters = {
-                new SqlParameter("@CustomerID", id)
-            };
-
-
-                    if (dal.ExecuteNonQuery(sql, parameters))
+                    if (customerBLL.DeleteCustomer(id))
                     {
-                        MessageBox.Show("Đã xóa sản phẩm!");
+                        MessageBox.Show("Đã xóa khách hàng!");
                         DisplayCustomers();
                         ResetFields();
                     }
@@ -109,19 +98,17 @@ namespace Hardware_Shop
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            string sql = "INSERT INTO Customers (CName, Phone, Email) VALUES (@Name, @Phone, @Email)";
-            SqlParameter[] parameters = {
-            new SqlParameter("@Name", txtCustom.Text),
-            new SqlParameter("@Phone", txtPhone.Text),
-            new SqlParameter("@Email", txtEmail.Text),
+            CustomerDTO c = new CustomerDTO
+            {
+                CName = txtCustom.Text,
+                Phone = txtPhone.Text,
+                Email = txtEmail.Text
+            };
 
-        };
-
-            if (dal.ExecuteNonQuery(sql, parameters))
+            if (customerBLL.AddCustomer(c))
             {
                 MessageBox.Show("Thêm thành công!");
                 DisplayCustomers();
-                ResetFields();
             }
             else
             {
@@ -133,24 +120,23 @@ namespace Hardware_Shop
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
+         
                 int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
-                string sql = "UPDATE Customers SET CName=@Name, Phone=@Phone, Email=@Email WHERE CustomerID=@CustomerID";
 
-
-                SqlParameter[] parameters = {
-            new SqlParameter("@Name", txtCustom.Text),
-            new SqlParameter("@Phone", txtPhone.Text),
-           new SqlParameter("@Email", txtEmail.Text),
-
-            new SqlParameter("@CustomerID", id)
-        };
-
-
-                if (dal.ExecuteNonQuery(sql, parameters))
+          
+                CustomerDTO c = new CustomerDTO
                 {
-                    MessageBox.Show("Cập nhật thành công!");
-                    DisplayCustomers();
-                    ResetFields();
+                    CustomerID = id,
+                    CName = txtCustom.Text,
+                    Phone = txtPhone.Text,
+                    Email = txtEmail.Text
+                };
+
+                if (customerBLL.UpdateCustomer(c))
+                {
+                    MessageBox.Show("Cập nhật khách hàng thành công!");
+                    DisplayCustomers(); 
+                    ResetFields();      
                 }
                 else
                 {
@@ -266,6 +252,21 @@ namespace Hardware_Shop
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null && dataGridView1.CurrentRow.Index != -1)
+            {
+
+                txtCustom.Text = dataGridView1.CurrentRow.Cells["CName"].Value.ToString();
+                txtPhone.Text = dataGridView1.CurrentRow.Cells["Phone"].Value.ToString();
+                txtEmail.Text = dataGridView1.CurrentRow.Cells["Email"].Value.ToString();
+             
+             
+
+
+            }
         }
     }
     }

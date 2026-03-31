@@ -271,6 +271,7 @@ namespace Hardware_Shop
             finally
             {
                 con.Close();
+                con.Open();
             }
 
 
@@ -287,7 +288,7 @@ namespace Hardware_Shop
             }
             else
             {
-                textBox1.Text="";
+                textBox1.Text ="";
             }
         }
 
@@ -296,8 +297,73 @@ namespace Hardware_Shop
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                // Lấy dữ liệu từ dòng đang được chọn trong DataGridView
+                int saleId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["SaleID"].Value);
+                int oldQty = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["QuantitySold"].Value);
+                string productId = dataGridView1.SelectedRows[0].Cells["ProductID"].Value.ToString();
+
+                try
+                {
+                    if (con.State == ConnectionState.Open) {
+                        con.Close();
+                    }
+                        con.Open();
+
+
+                    SqlCommand cmd = new SqlCommand("UPDATE Products SET Quantity = Quantity * @oldQty WHERE ProductID = @PID", con);
+                    cmd.Parameters.AddWithValue("@oldQty", oldQty);
+                    cmd.Parameters.AddWithValue("@PID", productId);
+                    cmd.ExecuteNonQuery();
+
+                    // Truy vấn lấy số lượng mới sau khi cập nhật (đang viết dở trong hình)
+                    SqlCommand sqlCommand = new SqlCommand("SELECT Quantity from Products WHERE ProductID = @PID", con);
+                    sqlCommand.Parameters.AddWithValue("@PID",cbProductID.Text);
+                    int currentStock = Convert.ToInt32(sqlCommand.ExecuteScalar());
+                    int newQty = Convert.ToInt32(txtQuantity.Text);
+                    if (newQty > currentStock)
+                    {
+                        MessageBox.Show("Số lượng trong kho không đủ để cập nhật");
+                        return;
+                    }
+                    decimal unitPrice = Convert.ToDecimal(textBox1.Text);
+                    decimal total = unitPrice * newQty;
+                    SqlCommand sql = new SqlCommand(@"UPDATE Sales SET CustomerID=@CusID, CustomerName=@CusName, ProductID=@ProID, ProductName=@ProName, QuantitySold=@Qty, TotalAmount=@Total, SaleDate=@Date WHERE SaleID=@SID ", con);
+                    sql.Parameters.AddWithValue("@CusID", cbCustomID.Text);
+                    sql.Parameters.AddWithValue("@CusName", txtCustom.Text);
+                    sql.Parameters.AddWithValue("@ProID", cbProductID.Text);
+                    sql.Parameters.AddWithValue("@ProName", txtProduct.Text);
+                    sql.Parameters.AddWithValue("@Qty", newQty);
+
+                    sql.Parameters.AddWithValue("@Total", total);
+
+                    sql.Parameters.AddWithValue("@Date", dateTimePicker1.Value.Date);
+                    sql.Parameters.AddWithValue("@SID", saleId);
+                    sql.ExecuteNonQuery();
+                    
+                    SqlCommand sqlCommand1 = new SqlCommand("UPDATE Products SET Quantity = Quantity - @newQty WHERE ProductID = @PID", con);
+                    sqlCommand1.Parameters.AddWithValue("@newQty", newQty);
+                    sqlCommand1.Parameters.AddWithValue("@PID", cbProductID.Text);
+                    sqlCommand1.ExecuteNonQuery();
+                    MessageBox.Show("Cập nhật hóa đơn thành công");
+                    
+                     DisplaySales();
+                     ResetFields();
             
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                    con.Open();
+                }
+            }
         }
+        
 
         private void label1_Click_1(object sender, EventArgs e)
         {
@@ -342,6 +408,64 @@ namespace Hardware_Shop
         }
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(cbProductID.Text) && int.TryParse(txtQuantity.Text, out int qty))
+            {
+                try
+                {
+                    con.Open();
+
+                    SqlCommand s = new SqlCommand("SELECT Price FROM Products WHERE ProductID = @ID", con);
+                    s.Parameters.AddWithValue("@ID", cbProductID.Text);
+
+                    object result = s.ExecuteScalar();
+
+                    if (result != null && decimal.TryParse(result.ToString(), out decimal unitPrice))
+                    {
+
+                        decimal total = unitPrice * qty;
+                        textBox1.Text = total.ToString("0.00");
+                    }
+                    else
+                    {
+                        textBox1.Text = "0.00";
+                    }
+                }
+                catch
+                {
+                    con.Close();
+                    textBox1.Text = "0.00";
+                }
+            }
+            else
+            {
+
+                textBox1.Text = "0.00";
+            }
+        }
+        
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null && dataGridView1.CurrentRow.Index != -1)
+            {
+         
+               cbCustomID.Text = dataGridView1.CurrentRow.Cells["CustomerID"].Value.ToString();
+                txtCustom.Text = dataGridView1.CurrentRow.Cells["CustomerName"].Value.ToString();
+                cbProductID.Text = dataGridView1.CurrentRow.Cells["ProductID"].Value.ToString();
+                txtProduct.Text = dataGridView1.CurrentRow.Cells["ProductName"].Value.ToString();
+                txtQuantity.Text = dataGridView1.CurrentRow.Cells["QuantitySold"].Value.ToString();
+                textBox1.Text = dataGridView1.CurrentRow.Cells["TotalAmount"].Value.ToString();
+                dateTimePicker1.Text = dataGridView1.CurrentRow.Cells["SaleDate"].Value.ToString();
+            }
+        }
+
+        private void textBox1_TextChanged_2(object sender, EventArgs e)
         {
 
         }

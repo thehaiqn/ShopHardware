@@ -118,9 +118,17 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HardwareBLL\HardwareBLL.csproj">
+      <Project>{f84430b1-fc2c-4f33-ab0f-5b65c35e5e77}</Project>
+      <Name>HardwareBLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Hardwawe.DAL\Hardwawe.DAL.csproj">
       <Project>{f5226ff4-4ddd-41f4-924a-ba5d9acc945c}</Project>
       <Name>Hardwawe.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hardwawe.DTO\Hardwawe.DTO.csproj">
+      <Project>{963c3f2b-1a14-4fb5-af61-3caf143a58e3}</Project>
+      <Name>Hardwawe.DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
