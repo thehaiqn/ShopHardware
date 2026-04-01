@@ -69,7 +69,9 @@ namespace Hardwawe.DAL
             SqlParameter[] pars = { new SqlParameter("@id", id) };
             return Execute(sql, pars);
         }
+      
+        }
     }
-}
+
 
     

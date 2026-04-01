@@ -86,6 +86,16 @@ namespace Hardwawe.DAL
             };
             return Execute(sql, pars);
         }
+        public bool UpdateStock(int productId, int qtySold)
+        {
+            // Câu lệnh trừ số lượng tồn kho dựa trên ID sản phẩm
+            string sql = "UPDATE Products SET Quantity = Quantity - @qty WHERE ProductID = @id";
+            SqlParameter[] pars = {
+        new SqlParameter("@qty", qtySold),
+        new SqlParameter("@id", productId)
+    };
+            return Execute(sql, pars); // Dùng lại hàm Execute chung đã viết hôm qua
+        }
     }
 }
 

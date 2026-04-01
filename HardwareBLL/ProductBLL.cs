@@ -20,7 +20,7 @@ namespace HardwareBLL
 
         public bool AddProduct(ProductDTO product)
         {
-            // Có thể thêm logic kiểm tra ở đây (VD: Tên sản phẩm không được để trống, Giá > 0,...)
+            
             if (string.IsNullOrEmpty(product.ProductName) || product.Price <= 0)
                 return false;
 
