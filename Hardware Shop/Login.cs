@@ -45,7 +45,7 @@ namespace Hardware_Shop
             string user = txtUser.Text;
             string pass = txtPass.Text;
 
-            // Gọi xuống BLL để check
+         
             if (loginBLL.KiemTraDangNhap(user, pass))
             {
                 MessageBox.Show("Đăng nhập thành công!", "Thông báo");
@@ -65,6 +65,30 @@ namespace Hardware_Shop
         {
             txtUser.Text = "";
             txtPass.Text = "";
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            Account acc = new Account();
+            acc.ShowDialog();
+              this.Hide();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            QuenMatKhau qmk = new QuenMatKhau();
+            qmk.Show();
+            this.Hide();
         }
     }
 }
