@@ -1,7 +1,7 @@
 <Solution>
   <Folder Name="/Solution Items/" />
-  <Project Path="../HardwareBLL/HardwareBLL.csproj" Id="f84430b1-fc2c-4f33-ab0f-5b65c35e5e77" />
-  <Project Path="../Hardwawe.DAL/Hardwawe.DAL.csproj" Id="f5226ff4-4ddd-41f4-924a-ba5d9acc945c" />
-  <Project Path="../Hardwawe.DTO/Hardwawe.DTO.csproj" Id="963c3f2b-1a14-4fb5-af61-3caf143a58e3" />
+  <Project Path="../HDAL/hardware.DAL.csproj" Id="255038d8-8e74-4a57-86d7-96c714d66569" DisplayName="Hardware.DAL" />
+  <Project Path="../HDTO/Hardware.DTO.csproj" Id="14fd10ff-dee5-439c-a180-27477a3dad3c" />
+  <Project Path="../HwBLL/Hardware.BLL.csproj" Id="efe07722-b9fc-49d0-8b0d-1f0c047f3d8e" />
   <Project Path="Hardware Shop.csproj" Id="1bf8cd8b-a69a-4db2-a02f-55d419ed16f0" />
 </Solution>

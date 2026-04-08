@@ -11,9 +11,7 @@ using System.Windows.Forms;
 using Hardwawe.DAL;
 
 namespace Hardware_Shop
-
 {
-
     public partial class Sales : Form
     {
 
@@ -23,8 +21,6 @@ namespace Hardware_Shop
             LoadCustomerIDs();
             LoadProductIDs();
             DisplaySales();
-
-
         }
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\THE HAI\Documents\Hardwawe Shop.mdf"";Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;");
         private void DisplaySales()
@@ -100,16 +96,6 @@ namespace Hardware_Shop
                 con.Close();
             }
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void label3_Click(object sender, EventArgs e)
         {
             Customers customers = new Customers();
@@ -128,12 +114,6 @@ namespace Hardware_Shop
         {
             Close();
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             Product product = new Product();
@@ -180,11 +160,6 @@ namespace Hardware_Shop
             con.Close();
         }
 
-        private void cbProductID_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-
-        }
-
         private void cbProductID_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -198,10 +173,6 @@ namespace Hardware_Shop
                 textBox1.Text = reader["Price"].ToString();
             }
             con.Close();
-        }
-        private void ProaIdCb_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -363,8 +334,6 @@ namespace Hardware_Shop
                 }
             }
         }
-        
-
         private void label1_Click_1(object sender, EventArgs e)
         {
             Product product = new Product();
@@ -443,13 +412,6 @@ namespace Hardware_Shop
                 textBox1.Text = "0.00";
             }
         }
-        
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow != null && dataGridView1.CurrentRow.Index != -1)
@@ -463,11 +425,6 @@ namespace Hardware_Shop
                 textBox1.Text = dataGridView1.CurrentRow.Cells["TotalAmount"].Value.ToString();
                 dateTimePicker1.Text = dataGridView1.CurrentRow.Cells["SaleDate"].Value.ToString();
             }
-        }
-
-        private void textBox1_TextChanged_2(object sender, EventArgs e)
-        {
-
         }
     }
 }

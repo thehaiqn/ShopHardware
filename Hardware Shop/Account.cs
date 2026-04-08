@@ -1,5 +1,4 @@
-﻿using HardwareBLL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Hardware.BLL;
 
 namespace Hardware_Shop
 {
@@ -42,11 +42,6 @@ namespace Hardware_Shop
             Login login =new Login();
             login.Show();
             this.Hide();
-        }
-
-        private void text1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

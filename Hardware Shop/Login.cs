@@ -1,5 +1,4 @@
-﻿using HardwareBLL;
-
+﻿using Hardware.BLL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,22 +18,6 @@ namespace Hardware_Shop
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void text1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -72,16 +55,6 @@ namespace Hardware_Shop
             Account acc = new Account();
             acc.ShowDialog();
               this.Hide();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void label4_Click(object sender, EventArgs e)

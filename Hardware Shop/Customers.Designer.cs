@@ -360,7 +360,7 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Khách Hàng";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+      
             // 
             // label2
             // 
@@ -446,7 +446,7 @@
             this.Name = "Customers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Customers";
-            this.Load += new System.EventHandler(this.Customers_Load);
+       
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

@@ -87,7 +87,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(304, 654);
             this.panel2.TabIndex = 9;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+ 
             // 
             // label12
             // 
@@ -124,7 +124,7 @@
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox8.TabIndex = 1;
             this.pictureBox8.TabStop = false;
-            this.pictureBox8.Click += new System.EventHandler(this.pictureBox8_Click);
+   
             // 
             // pictureBox9
             // 
@@ -195,7 +195,7 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Sản Phẩm";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+   
             // 
             // label9
             // 
@@ -272,7 +272,7 @@
             this.label7.Size = new System.Drawing.Size(36, 21);
             this.label7.TabIndex = 15;
             this.label7.Text = "Giá";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+       
             // 
             // txtName
             // 
@@ -412,7 +412,7 @@
             this.Products.Size = new System.Drawing.Size(157, 31);
             this.Products.TabIndex = 25;
             this.Products.Text = "SẢN PHẨM";
-            this.Products.Click += new System.EventHandler(this.Products_Click);
+  
             // 
             // cbLoai
             // 

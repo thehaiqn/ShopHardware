@@ -1,4 +1,5 @@
 ﻿
+using Hardware.BLL;
 using HardwareBLL;
 using Hardwawe.DAL;
 using Hardwawe.DTO;
@@ -197,16 +198,6 @@ namespace Hardware_Shop
             this.Hide();
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Customers_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void pictureBox10_Click_1(object sender, EventArgs e)
         {
             Sales sale = new Sales();
@@ -247,11 +238,6 @@ namespace Hardware_Shop
            Product product = new Product();
             product.Show();
             this.Hide();
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void dataGridView1_DoubleClick(object sender, EventArgs e)

@@ -1,0 +1,5 @@
+D:\ThucHanhLTUD\DoAn\HardwareDTO\obj\Debug\net10.0-windows\Hardware.DTO.GeneratedMSBuildEditorConfig.editorconfig
+D:\ThucHanhLTUD\DoAn\HardwareDTO\obj\Debug\net10.0-windows\Hardware.DTO.AssemblyInfoInputs.cache
+D:\ThucHanhLTUD\DoAn\HardwareDTO\obj\Debug\net10.0-windows\Hardware.DTO.AssemblyInfo.cs
+D:\ThucHanhLTUD\DoAn\HardwareDTO\obj\Debug\net10.0-windows\Hardware.DTO.csproj.CoreCompileInputs.cache
+D:\ThucHanhLTUD\DoAn\HardwareDTO\obj\Debug\net10.0-windows\Hardware.DTO.sourcelink.json

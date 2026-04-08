@@ -115,7 +115,7 @@
             this.text1.Size = new System.Drawing.Size(208, 35);
             this.text1.TabIndex = 20;
             this.text1.Text = "Create Account";
-            this.text1.Click += new System.EventHandler(this.text1_Click);
+          
             // 
             // label1
             // 

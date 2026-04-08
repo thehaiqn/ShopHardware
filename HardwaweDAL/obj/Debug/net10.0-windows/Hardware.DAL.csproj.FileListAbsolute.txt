@@ -1,0 +1,6 @@
+D:\ThucHanhLTUD\DoAn\HardwaweDAL\obj\Debug\net10.0-windows\Hardware.DAL.csproj.AssemblyReference.cache
+D:\ThucHanhLTUD\DoAn\HardwaweDAL\obj\Debug\net10.0-windows\Hardware.DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\ThucHanhLTUD\DoAn\HardwaweDAL\obj\Debug\net10.0-windows\Hardware.DAL.AssemblyInfoInputs.cache
+D:\ThucHanhLTUD\DoAn\HardwaweDAL\obj\Debug\net10.0-windows\Hardware.DAL.AssemblyInfo.cs
+D:\ThucHanhLTUD\DoAn\HardwaweDAL\obj\Debug\net10.0-windows\Hardware.DAL.csproj.CoreCompileInputs.cache
+D:\ThucHanhLTUD\DoAn\HardwaweDAL\obj\Debug\net10.0-windows\Hardware.DAL.sourcelink.json

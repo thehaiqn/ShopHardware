@@ -38,22 +38,6 @@ namespace Hardware_Shop
             dataGridView1.DataSource = bll.GetProducts();
         }
 
-      
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-      
-
-      
-
         private void label3_Click(object sender, EventArgs e)
         {
             Customers cs = new Customers();
@@ -68,9 +52,6 @@ namespace Hardware_Shop
             this.Hide();
         }
 
-  
-
-       
         
         private void ResetFields()
         {
@@ -207,17 +188,6 @@ namespace Hardware_Shop
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
             }
         }
-
-        private void cbLoai_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Products_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void label8_Click(object sender, EventArgs e)
         {
             Close();
@@ -269,19 +239,5 @@ namespace Hardware_Shop
             login.Show();
             this.Hide();
         }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox8_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-           
-        }
-    } }
+    } 
+}
