@@ -79,6 +79,6 @@ D:\ThucHanhLTUD\DoAn\HDAL\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.d
 D:\ThucHanhLTUD\DoAn\HDAL\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
 D:\ThucHanhLTUD\DoAn\HDAL\obj\Debug\hardware.DAL.csproj.AssemblyReference.cache
 D:\ThucHanhLTUD\DoAn\HDAL\obj\Debug\hardware.DAL.csproj.CoreCompileInputs.cache
-D:\ThucHanhLTUD\DoAn\HDAL\obj\Debug\hardware.D1B17289.Up2Date
 D:\ThucHanhLTUD\DoAn\HDAL\obj\Debug\HDAL.dll
 D:\ThucHanhLTUD\DoAn\HDAL\obj\Debug\HDAL.pdb
+D:\ThucHanhLTUD\DoAn\HDAL\obj\Debug\hardware.D1B17289.Up2Date

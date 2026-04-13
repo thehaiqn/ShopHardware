@@ -50,10 +50,10 @@
             this.text1.BackColor = System.Drawing.SystemColors.GrayText;
             this.text1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.text1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.text1.Location = new System.Drawing.Point(191, 88);
+            this.text1.Location = new System.Drawing.Point(207, 97);
             this.text1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.text1.Name = "text1";
-            this.text1.Size = new System.Drawing.Size(213, 35);
+            this.text1.Size = new System.Drawing.Size(175, 26);
             this.text1.TabIndex = 0;
             this.text1.Text = "Hardware Shop";
             // 
@@ -63,10 +63,10 @@
             this.label1.BackColor = System.Drawing.SystemColors.GrayText;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(18, 292);
+            this.label1.Location = new System.Drawing.Point(59, 294);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 31);
+            this.label1.Size = new System.Drawing.Size(100, 24);
             this.label1.TabIndex = 2;
             this.label1.Text = "Username";
             // 
@@ -76,10 +76,10 @@
             this.label2.BackColor = System.Drawing.SystemColors.GrayText;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Location = new System.Drawing.Point(18, 385);
+            this.label2.Location = new System.Drawing.Point(59, 387);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(127, 31);
+            this.label2.Size = new System.Drawing.Size(96, 24);
             this.label2.TabIndex = 3;
             this.label2.Text = "Password";
             // 
@@ -87,14 +87,14 @@
             // 
             this.txtUser.Location = new System.Drawing.Point(197, 295);
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(222, 30);
+            this.txtUser.Size = new System.Drawing.Size(222, 26);
             this.txtUser.TabIndex = 4;
             // 
             // txtPass
             // 
             this.txtPass.Location = new System.Drawing.Point(197, 388);
             this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(222, 30);
+            this.txtPass.Size = new System.Drawing.Size(222, 26);
             this.txtPass.TabIndex = 5;
             // 
             // btnLogin
@@ -145,28 +145,29 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.Firebrick;
-            this.label3.Location = new System.Drawing.Point(130, 517);
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label3.Location = new System.Drawing.Point(328, 509);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 23);
+            this.label3.Size = new System.Drawing.Size(79, 22);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Tạo tài khoản";
+            this.label3.Text = "Register";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Firebrick;
-            this.label4.Location = new System.Drawing.Point(324, 517);
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label4.Location = new System.Drawing.Point(177, 511);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(138, 23);
+            this.label4.Size = new System.Drawing.Size(157, 19);
             this.label4.TabIndex = 10;
-            this.label4.Text = "Quên mật khẩu";
+            this.label4.Text = "Don\'t have on accout?";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;

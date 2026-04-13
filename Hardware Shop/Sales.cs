@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Hardwawe.DAL;
-
+using Excel = Microsoft.Office.Interop.Excel;
 namespace Hardware_Shop
 {
     public partial class Sales : Form
@@ -45,13 +45,16 @@ namespace Hardware_Shop
         }
         private void ResetFields()
         {
-            cbCustomID.Text = "";
-            txtCustom.Text = "";
-            cbProductID.Text = "";
-            txtProduct.Text = "";
-            txtQuantity.Text = "";
-            txtPrice.Text = "";
-            dateTimePicker1.Text = "";
+            cbCustomID.SelectedIndex = -1;
+            txtCustom.Clear();
+
+            cbProductID.SelectedIndex = -1;
+            txtProduct.Clear();
+
+            txtQuantity.Clear();
+            txtPrice.Clear();
+
+            dateTimePicker1.Value = DateTime.Now;
 
         }
         private void LoadCustomerIDs()
@@ -149,15 +152,32 @@ namespace Hardware_Shop
 
         private void cbCustomID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            con.Open();
-            SqlCommand sqlCommand = new SqlCommand("SELECT CNAME From Customers WHERE CustomerID=@ID", con);
-            sqlCommand.Parameters.AddWithValue("@ID", cbCustomID.Text);
-            SqlDataReader reader = sqlCommand.ExecuteReader();
-            if (reader.Read())
+            try
             {
-                txtCustom.Text = reader["CName"].ToString();
+                if (con.State == ConnectionState.Open)
+                    con.Close();
+
+                con.Open();
+
+                SqlCommand sqlCommand = new SqlCommand(
+                    "SELECT CNAME FROM Customers WHERE CustomerID = @ID", con);
+
+                sqlCommand.Parameters.AddWithValue("@ID", cbCustomID.Text);
+
+                SqlDataReader reader = sqlCommand.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    txtCustom.Text = reader["CNAME"].ToString();
+                }
+
+                reader.Close();
+                con.Close();
             }
-            con.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void cbProductID_SelectedIndexChanged(object sender, EventArgs e)
@@ -189,66 +209,62 @@ namespace Hardware_Shop
                 return;
             }
             try
-            {
-                con.Open();
-                SqlCommand sqlCommand = new SqlCommand("SELECT Quantity, Price FROM Products Where ProductID = @PID",con);
-                sqlCommand.Parameters.AddWithValue("@PID", cbProductID.Text);
-                SqlDataReader reader = sqlCommand.ExecuteReader();
-                if (!reader.Read())
-                {
-                    MessageBox.Show("Không tìm thấy sản phẩm");
+            {           
+                    con.Open();
+                    SqlCommand sqlCommand = new SqlCommand("SELECT Quantity, Price FROM Products Where ProductID = @PID", con);
+                    sqlCommand.Parameters.AddWithValue("@PID", cbProductID.Text);
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    if (!reader.Read())
+                    {
+                        MessageBox.Show("Không tìm thấy sản phẩm");
+                        reader.Close();
+                        con.Close();
+                        return;
+                    }
+                    int availableQty = Convert.ToInt32(reader["Quantity"]);
+                    decimal unitPrice = Convert.ToInt32(reader["Price"]);
                     reader.Close();
-                    con.Close();
-                    return;
-                }
-                int availableQty = Convert.ToInt32(reader["Quantity"]);
-                decimal unitPrice = Convert.ToInt32(reader["Price"]);
-                reader.Close();
-                if(quantitySold > unitPrice)
-                {
-                    MessageBox.Show("Hàng không có sẵn");
-                    return;
-                }
-                decimal totalAmount = quantitySold * unitPrice;
+                    if (quantitySold > unitPrice)
+                    {
+                        MessageBox.Show("Hàng không có sẵn");
+                        return;
+                    }
+                    decimal totalAmount = quantitySold * unitPrice;
 
 
-                string sql = "INSERT INTO Sales(CustomerID, CustomerName, ProductID, ProductName, QuantitySold, TotalAmount, SaleDate) " +
-                             "VALUES (@CusID, @CusName, @ProID, @ProName, @Qty, @Total, @Date)";
+                SqlCommand insert = new SqlCommand(
+            "INSERT INTO Sales(CustomerID, CustomerName, ProductID, ProductName, QuantitySold, TotalAmount, SaleDate) " +
+            "VALUES (@CusID, @CusName, @ProID, @ProName, @Qty, @Total, @Date)", con);
 
-                SqlCommand cmd = new SqlCommand(sql, con);
 
+                insert.Parameters.AddWithValue("@CusID", cbCustomID.Text);
+                insert.Parameters.AddWithValue("@CusName", txtCustom.Text);
+                insert.Parameters.AddWithValue("@ProID", cbProductID.Text);
+                insert.Parameters.AddWithValue("@ProName", txtProduct.Text);
+                insert.Parameters.AddWithValue("@Qty", quantitySold);
 
-                cmd.Parameters.AddWithValue("@CusID", cbCustomID.Text);
-                cmd.Parameters.AddWithValue("@CusName", txtCustom.Text);
-                cmd.Parameters.AddWithValue("@ProID", cbProductID.Text);
-                cmd.Parameters.AddWithValue("@ProName", txtProduct.Text);
-                cmd.Parameters.AddWithValue("@Qty", quantitySold);
-               
-                cmd.Parameters.AddWithValue("@Total", textBox1.Text);
+                insert.Parameters.AddWithValue("@Total", textBox1.Text);
 
-                cmd.Parameters.AddWithValue("@Date", dateTimePicker1.Value.Date);
+                insert.Parameters.AddWithValue("@Date", dateTimePicker1.Value.Date);
 
-                cmd.ExecuteNonQuery();
-                SqlCommand updateStock = new SqlCommand("UPDATE Products SET Quantity= Quantity -@Qty Where ProductID = @PID", con);
-                MessageBox.Show("Thêm hóa đơn thành công");
-                con.Close();
+                insert.ExecuteNonQuery();
+                SqlCommand update = new SqlCommand("UPDATE Products SET Quantity = Quantity - @Qty WHERE ProductID = @PID", con);
+
+                update.Parameters.AddWithValue("@Qty", quantitySold);
+                update.Parameters.AddWithValue("@PID", cbProductID.Text);
+
+                update.ExecuteNonQuery();
+                MessageBox.Show("Thêm hóa đơn thành công!");
                 DisplaySales();
                 ResetFields();
             }
+
+            
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            finally
-            {
-                con.Close();
-                con.Open();
-            }
-
-
         }
-
-
         private void txtQuantity_TextChanged(object sender, EventArgs e)
         {
 
@@ -262,10 +278,6 @@ namespace Hardware_Shop
                 textBox1.Text ="";
             }
         }
-
-
-
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -330,7 +342,7 @@ namespace Hardware_Shop
                 finally
                 {
                     con.Close();
-                    con.Open();
+                   
                 }
             }
         }
@@ -426,5 +438,103 @@ namespace Hardware_Shop
                 dateTimePicker1.Text = dataGridView1.CurrentRow.Cells["SaleDate"].Value.ToString();
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show("Vui lòng chọn dòng cần xóa");
+                return;
+            }
+
+            int saleID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["SaleID"].Value);
+            int productID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ProductID"].Value);
+            int quantitySold = Convert.ToInt32(dataGridView1.CurrentRow.Cells["QuantitySold"].Value);
+
+            DialogResult result = MessageBox.Show("Bạn có chắc muốn xóa không?", "Xác nhận", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+                return;
+
+            try
+            {
+                // 🔥 FIX QUAN TRỌNG
+                if (con.State == ConnectionState.Open)
+                    con.Close();
+
+                con.Open();
+
+                // 1. Xóa hóa đơn
+                SqlCommand delete = new SqlCommand(
+                    "DELETE FROM Sales WHERE SaleID = @ID", con);
+
+                delete.Parameters.AddWithValue("@ID", saleID);
+                delete.ExecuteNonQuery();
+
+                // 2. Cộng lại số lượng sản phẩm
+                SqlCommand update = new SqlCommand(
+                    "UPDATE Products SET Quantity = Quantity + @Qty WHERE ProductID = @PID", con);
+
+                update.Parameters.AddWithValue("@Qty", quantitySold);
+                update.Parameters.AddWithValue("@PID", productID);
+                update.ExecuteNonQuery();
+
+                MessageBox.Show("Xóa thành công!");
+
+                con.Close(); // 🔥 luôn đóng lại
+                DisplaySales();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnExportExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Excel.Application app = new Excel.Application();
+                app.Workbooks.Add(Type.Missing);
+
+                // Tên sheet
+                Excel._Worksheet sheet = app.ActiveSheet;
+                sheet.Name = "HoaDon";
+
+                // 1. Header
+                for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                {
+                    sheet.Cells[1, i + 1] = dataGridView1.Columns[i].HeaderText;
+                }
+
+                // 2. Data
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                    {
+                        sheet.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value?.ToString();
+                    }
+                }
+
+                // 3. Autofit
+                sheet.Columns.AutoFit();
+                SaveFileDialog save = new SaveFileDialog();
+                save.Filter = "Excel File|*.xlsx";
+
+                if (save.ShowDialog() == DialogResult.OK)
+                {
+                    sheet.SaveAs(save.FileName);
+                    MessageBox.Show("Lưu file thành công!");
+                }
+                // 4. Hiển thị Excel
+                app.Visible = true;
+
+                MessageBox.Show("Xuất Excel thành công!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
-}
+    }
+
