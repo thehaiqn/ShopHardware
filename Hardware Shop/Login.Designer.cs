@@ -111,7 +111,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(490, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(507, 1);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(100, 50);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -145,24 +145,24 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label3.Location = new System.Drawing.Point(328, 509);
+            this.label3.Location = new System.Drawing.Point(220, 511);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 22);
+            this.label3.Size = new System.Drawing.Size(75, 19);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Register";
+            this.label3.Text = "Register /";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label4.Location = new System.Drawing.Point(177, 511);
+            this.label4.Location = new System.Drawing.Point(293, 511);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(157, 19);
+            this.label4.Size = new System.Drawing.Size(127, 19);
             this.label4.TabIndex = 10;
-            this.label4.Text = "Don\'t have on accout?";
+            this.label4.Text = "Forgot password?";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // Login

@@ -1,9 +1,0 @@
-D:\ThucHanhLTUD\DoAn\Hardwawe.DTO\bin\Debug\Hardwawe.DTO.exe.config
-D:\ThucHanhLTUD\DoAn\Hardwawe.DTO\bin\Debug\Hardwawe.DTO.exe
-D:\ThucHanhLTUD\DoAn\Hardwawe.DTO\bin\Debug\Hardwawe.DTO.pdb
-D:\ThucHanhLTUD\DoAn\Hardwawe.DTO\obj\Debug\Hardwawe.DTO.csproj.AssemblyReference.cache
-D:\ThucHanhLTUD\DoAn\Hardwawe.DTO\obj\Debug\Hardwawe.DTO.Properties.Resources.resources
-D:\ThucHanhLTUD\DoAn\Hardwawe.DTO\obj\Debug\Hardwawe.DTO.csproj.GenerateResource.cache
-D:\ThucHanhLTUD\DoAn\Hardwawe.DTO\obj\Debug\Hardwawe.DTO.csproj.CoreCompileInputs.cache
-D:\ThucHanhLTUD\DoAn\Hardwawe.DTO\obj\Debug\Hardwawe.DTO.exe
-D:\ThucHanhLTUD\DoAn\Hardwawe.DTO\obj\Debug\Hardwawe.DTO.pdb

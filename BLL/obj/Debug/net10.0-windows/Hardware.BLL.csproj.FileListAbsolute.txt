@@ -1,6 +1,0 @@
-D:\ThucHanhLTUD\DoAn\BLL\obj\Debug\net10.0-windows\Hardware.BLL.csproj.AssemblyReference.cache
-D:\ThucHanhLTUD\DoAn\BLL\obj\Debug\net10.0-windows\Hardware.BLL.GeneratedMSBuildEditorConfig.editorconfig
-D:\ThucHanhLTUD\DoAn\BLL\obj\Debug\net10.0-windows\Hardware.BLL.AssemblyInfoInputs.cache
-D:\ThucHanhLTUD\DoAn\BLL\obj\Debug\net10.0-windows\Hardware.BLL.AssemblyInfo.cs
-D:\ThucHanhLTUD\DoAn\BLL\obj\Debug\net10.0-windows\Hardware.BLL.csproj.CoreCompileInputs.cache
-D:\ThucHanhLTUD\DoAn\BLL\obj\Debug\net10.0-windows\Hardware.BLL.sourcelink.json
